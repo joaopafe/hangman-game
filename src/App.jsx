@@ -42,6 +42,26 @@ const App = () => {
           : buttonLetter;
       })
     );
+
+    checkPlay(buttonletterForUpdate, letters);
+  };
+
+  const checkPlay = (playedLetter, letters) => {
+    const matchedLetters = letters
+      .map((letter, index) => ({ letter, index }))
+      .filter((obj) => obj.letter.name === playedLetter);
+
+    if (matchedLetters.length != 0) {
+      const newLetters = letters;
+
+      for (const matchedLetter of matchedLetters) {
+        newLetters[matchedLetter.index].show = true;
+      }
+
+      setLetters(newLetters);
+    } else {
+      console.log("Errou o palpite");
+    }
   };
 
   return (

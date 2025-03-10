@@ -19,7 +19,15 @@ const App = () => {
     generateButtonLetterList()
   );
 
-  const updateGallowStep = () => setGallowStep(gallowStep + 1);
+  const updateGallowStep = () => {
+    if (gallowStep < 7) setGallowStep(gallowStep + 1);
+
+    if (gallowStep === 7) {
+      setGallowStep(1);
+
+      updateWord();
+    }
+  };
 
   const updateWord = () => {
     const newWord = raffleWord(words);
@@ -60,7 +68,7 @@ const App = () => {
 
       setLetters(newLetters);
     } else {
-      console.log("Errou o palpite");
+      updateGallowStep();
     }
   };
 

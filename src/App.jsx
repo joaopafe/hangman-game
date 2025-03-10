@@ -23,17 +23,25 @@ const App = () => {
     if (gallowStep < 7) setGallowStep(gallowStep + 1);
 
     if (gallowStep === 7) {
+      window.alert("Você perdeu. Tente novamente!");
+
       setGallowStep(1);
 
       updateWord();
+
+      setButtonLetterList(generateButtonLetterList);
     }
   };
 
   const updateWord = () => {
     const newWord = raffleWord(words);
 
+    setGallowStep(1);
+
     setWord(newWord);
     updateLetters(newWord.name);
+
+    setButtonLetterList(generateButtonLetterList);
   };
 
   const updateLetters = (word) => {
